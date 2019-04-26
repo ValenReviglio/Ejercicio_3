@@ -33,33 +33,35 @@ function renderAgencies(data) {
         "</table>"
     )
 
-    for (i in data) {
+    Object.keys(data).forEach(function (k) {
         $("#body").append(
             "<tr>\n" +
-                "<th>"+data[i].site_id+"</th>" +
-                "<th>"+data[i].description+"</th>" +
-                "<th>"+data[i].distance+"</th>" +
-                "<th>"+data[i].address.address_line+"</th>" +
-                "<th>"+data[i].agency_code+"</th>"+
+                "<th>"+data[k].site_id+"</th>" +
+                "<th>"+data[k].description+"</th>" +
+                "<th>"+data[k].distance+"</th>" +
+                "<th>"+data[k].address.address_line+"</th>" +
+                "<th>"+data[k].agency_code+"</th>"+
                 "<th>" +
-                    "<button id="+data[i].agency_code+" type='button'' class='btn btn-success'>Guardar</button>" +
+                    "<button id="+data[k].agency_code+" type='button'' class='btn btn-success'>Guardar</button>" +
                 "</th>"+
                 "<th>" +
-                    "<button id="+data[i].agency_code+"2 type='button'' class='btn btn-danger'>Eliminar</button>" +
+                    "<button id="+data[k].agency_code+"2 type='button'' class='btn btn-danger'>Eliminar</button>" +
                 "</th>"+
             "</tr>\n"
         )
-        $('#'+data[i].agency_code).click(function(){
-            saveAgency(data[i])
+        $('#'+data[k].agency_code).click(function(){
+            console.log(data[k].agency_code)
+            saveAgency(data[k])
         })
-        $('#'+data[i].agency_code+"2").click(function(){
-            deleteAgency(data[i].agency_code)
+        $('#'+data[k].agency_code+"2").click(function(){
+            deleteAgency(data[k].agency_code)
         })
-    }
+    });
 
 }
 
 function saveAgency(agency) {
+    console.log("ESTA ES MI AGENCIA")
     console.log(agency)
     $.ajax({
         url: "/client/saveAgency",
