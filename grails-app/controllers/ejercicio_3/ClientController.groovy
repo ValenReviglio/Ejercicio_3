@@ -38,4 +38,8 @@ class ClientController {
         Address address = new Address(agency.address.address_line, agency.address.city, agency.address.location, agency.address.country, agency.address.state, agency.address.zip_code, agency.address.other_info);
         return new Agency(address, Integer.parseInt(agency.agency_code), agency.description, agency.disabled, Double.parseDouble(agency.distance), agency.id, agency.payment_method_id, agency.phone, agency.site_id)
     }
+
+    def deleteAgency(agency_id) {
+
+    }
 }

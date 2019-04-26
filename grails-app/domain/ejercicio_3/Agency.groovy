@@ -11,6 +11,10 @@ class Agency {
     String payment_method_id
     String phone
     String site_id
+
+    static mapping = {
+        id generator:'assigned', name:'id'
+    }
     static constraints = {
         agency_code nullable: false
         agency_code unique: true
